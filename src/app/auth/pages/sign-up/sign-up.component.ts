@@ -4,12 +4,14 @@ import { Router, RouterLink } from '@angular/router';
 import { FormUtils } from '../../../utils/form-utils';
 import { AuthService } from '../../services/auth.service';
 import { Users } from '../../models/user.interface';
+import { FormComponent } from "../../components/form/form.component";
+import { ToastService } from '../../../shared/services/toast.service';
 
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, FormComponent],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
@@ -19,6 +21,7 @@ export default class SignUpComponent {
   private _authService = inject(AuthService);
   private _router = inject(Router);
   fb = inject(FormBuilder)
+  private toastService = inject(ToastService);
 
 
   // Agregar estado de loading
@@ -66,36 +69,10 @@ export default class SignUpComponent {
         // Desactivar loading en caso de error
           this.loading = false;
         // Mostrar toast con mensaje de error
-        this.showErrorToast(error);
+        this.toastService.show('Error al registrar usuario, El usuario que intentas registrar ya existe', 'error')
       }
     });
 
   }
-
-
-      showErrorToast(error:any){
-      let message = 'Error l iniciar sesión.';
-
-      if (error.status === 400) {
-        message = 'Error al registrar usuario. Usuario ya existe.';
-      } else if (error.status === 0) {
-        message = 'Error de conexión. Verifica tu internet.';
-      } else if (error.status === 500) {
-        message = 'Error del servidor. Por favor, intenta más tarde.';
-      }
-
-
-      this.toastMessage = message;
-      this.toastType = 'error';
-      this.showToast = true;
-
-      setTimeout(()=>{
-        this.showToast = false;
-      }, 3000);
-      }
-
-      closeToast(){
-        this.showToast = false;
-      }
 
 }

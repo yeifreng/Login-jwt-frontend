@@ -4,11 +4,13 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Users } from '../../models/user.interface';
+import { FormComponent } from "../../components/form/form.component";
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, FormComponent],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
@@ -18,14 +20,12 @@ export default class LogInComponent {
     private _authService = inject(AuthService);
     private _router = inject(Router);
     fb = inject(FormBuilder)
+    private toastService = inject(ToastService);
 
 
     // Agregar estado de loading
     loading = false;
-    //Manejo del toast error
-    showToast = false;
-    toastMessage = '';
-    toastType: 'error' | 'success' = 'error'; // Puedes extender esto si necesitas más tipos
+    //Manejo del toast erro
 
 
     // Definir el formulario de inicio de sesión
@@ -35,9 +35,6 @@ export default class LogInComponent {
     })
 
     addLogInForm() {
-
-      // Ocultar toast si estaba visible
-      this.showToast = false;
 
 
         //Validar el formulario
@@ -68,40 +65,12 @@ export default class LogInComponent {
           // Desactivar loading en caso de error
           this.loading = false;
            // Mostrar toast con mensaje de error
-        this.showErrorToast(error);
+        this.toastService.show('Error al iniciar sesión. Por favor, verifica tus credenciales e intenta de nuevo.', 'error')
         }
 
       });
 
     }
 
-
-
-    showErrorToast(error:any){
-      let message = 'Error l iniciar sesión.';
-
-      if (error.status === 400) {
-        message = 'Credenciales incorrectas. Verifica tu email y contraseña.';
-      } else if (error.status === 404) {
-        message = 'Usuario no encontrado.';
-      } else if (error.status === 0) {
-        message = 'Error de conexión. Verifica tu internet.';
-      } else if (error.status === 500) {
-        message = 'Error del servidor. Por favor, intenta más tarde.';
-      }
-
-
-      this.toastMessage = message;
-      this.toastType = 'error';
-      this.showToast = true;
-
-      setTimeout(()=>{
-        this.showToast = false;
-      }, 3000);
-      }
-
-      closeToast(){
-        this.showToast = false;
-      }
 
 }

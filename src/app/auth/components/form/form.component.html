@@ -1,0 +1,77 @@
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="flex flex-col items-center">
+        <!-- Aquí va tu SVG de loading -->
+         <img src="../../../../assets/spinner.svg" alt="Cargando..." class="w-16 h-16 animate-spin" />
+         <p class="mt-4 text-white font-medium">Procesando...</p>
+      </div>
+    </div>
+  }
+
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+
+    <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white" >
+      <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+      {{ mode === 'signup' ? 'Crea tu cuenta' : 'Iniciar sesión' }}
+    </a>
+
+    <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="space-y-4 md:space-y-6">
+
+          <!-- NAME (solo signup) -->
+          @if (mode === 'signup') {
+            <div>
+              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+              <input type="text" formControlName="name" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              @if(formUtils.isValidField(formGroup,'name')){
+                <span class="text-red-500 text-sm">
+                  {{ formUtils.getFieldError(formGroup,'name') }}
+                </span>
+              }
+            </div>
+          }
+
+          <!-- EMAIL -->
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
+            <input type="email" formControlName="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            @if(formUtils.isValidField(formGroup,'email')){
+              <span class="text-red-500 text-sm">
+                {{ formUtils.getFieldError(formGroup,'email') }}
+              </span>
+            }
+          </div>
+
+          <!-- PASSWORD -->
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+            <input type="password" formControlName="password" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            @if(formUtils.isValidField(formGroup,'password')){
+              <span class="text-red-500 text-sm">
+                {{ formUtils.getFieldError(formGroup,'password') }}
+              </span>
+            }
+          </div>
+
+          <button type="submit" class="w-full bg-emerald-600 text-white py-2 rounded">
+            {{ mode === 'signup' ? 'Crear cuenta' : 'Iniciar sesión' }}
+          </button>
+
+          <p class="text-sm text-center text-gray-500">
+            @if (mode === 'signup') {
+              ¿Ya tienes cuenta?
+              <a routerLink="/auth/log-in" class="text-emerald-600">Inicia sesión</a>
+            } @else {
+              ¿No tienes cuenta?
+              <a routerLink="/auth/sign-up" class="text-emerald-600">Regístrate</a>
+            }
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
