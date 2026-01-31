@@ -14,7 +14,7 @@ export class FormComponent {
 
   formUtils = FormUtils;
 
-  @Input() formGroup!: FormGroup;
+  @Input() logInForm!: FormGroup;
   @Input() mode: 'login' | 'signup' = 'login';
   @Input() loading = false;
 

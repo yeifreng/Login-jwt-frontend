@@ -21,52 +21,6 @@
       <app-sales></app-sales>
   </section>
 
-
-
-    <!-- Lista de usuarios -->
-
-  <div class="space-y-4 p-8">
-    <ul role="list" class="max-w-md divide-y divide-default">
-      @for (user of users(); track user.id) {
-        <li class="py-3 sm:py-4">
-          <div class="flex items-center space-x-3 rtl:space-x-reverse">
-            <div class="shrink-0">
-              <div
-                class="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full"
-              >
-                <svg
-                  class="absolute w-12 h-12 text-gray-400 -left-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-white truncate">
-                {{ user.name }}
-              </p>
-              <p class="text-sm text-gray-400 truncate">
-                {{ user.email }}
-              </p>
-            </div>
-            <span
-              class="inline-flex items-center bg-success-soft border border-success-subtle text-fg-success-strong text-xs font-medium px-1.5 py-0.5 rounded-sm"
-            >
-              <span class="w-2 h-2 me-1 bg-success rounded-full"></span>
-              Available
-            </span>
-          </div>
-        </li>
-      }
-    </ul>
-  </div>
 </main>
 
 <app-footer></app-footer>

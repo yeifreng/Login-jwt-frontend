@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Signal, signal } from '@angular/core';
+import { Users } from '../../../auth/models/user.interface';
 
 @Component({
   selector: 'app-user-list',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class UserListComponent {
 
+  @Input() users?: Signal<Users[] | undefined>;
 }

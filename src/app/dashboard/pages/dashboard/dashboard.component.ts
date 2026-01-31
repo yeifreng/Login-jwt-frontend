@@ -26,11 +26,5 @@ export default class DashboardComponent implements OnInit{
   private _dashboardService = inject(DashboardService);
   private _storageService = inject(StorageService);
   private router = inject(Router);
-  users = toSignal(this._dashboardService.getusers());
-
-  signOut(){
-  this._storageService.remove('session');
-  this.router.navigateByUrl('/auth/log-in');
-}
 
 }

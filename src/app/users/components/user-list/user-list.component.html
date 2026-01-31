@@ -1,1 +1,43 @@
-<p>user-list works!</p>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-6 p-6"
+    >
+      @for (user of users!(); track user.id) {
+        <div
+          class="flex items-center gap-4 bg-gray-900 border border-gray-700/40 rounded-xl px-4 py-3 w-full max-w-sm shadow-[0_0_15px_rgba(34,211,238,0.35)]"
+        >
+          <!-- Avatar -->
+          <div
+            class="relative w-10 h-10 overflow-hidden bg-neutral-secondary-medium rounded-full"
+          >
+            <svg
+              class="absolute w-12 h-12 text-gray-400 -left-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Info -->
+          <div class="flex-1">
+            <p class="text-white font-semibold leading-tight">
+              {{ user.name }}
+            </p>
+            <p class="text-sm text-gray-400">
+              {{ user.email }}
+            </p>
+          </div>
+
+          <!-- Status -->
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-400">Active</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+          </div>
+        </div>
+      }
+    </div>

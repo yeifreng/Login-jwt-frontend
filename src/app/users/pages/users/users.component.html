@@ -1,1 +1,13 @@
-<p>users works!</p>
+<section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
+  <app-navbar></app-navbar>
+  <main class="flex-1">
+    <div class="p-6">
+      <h2 class="text-white text-4xl">Directorio de usuarios</h2>
+      <hr class="border-gray-700 mt-4 mb-6" />
+    </div>
+
+    <app-user-list [users]="users"></app-user-list>
+
+  </main>
+  <app-footer></app-footer>
+</section>

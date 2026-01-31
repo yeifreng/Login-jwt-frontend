@@ -9,19 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardService {
 
-  private _http = inject(HttpClient);
 
-  getusers(): Observable<Users[]>{
-    return this._http.get<Users[]>(`${environment.API_URL}/users`).pipe(
-      map((response)=>{
-      return response.map(
-        (user) =>({
-        name: user.name,
-        email: user.email
-      })
-    );
 
-    })
-    );
-  }
 }

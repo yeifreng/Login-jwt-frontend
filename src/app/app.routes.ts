@@ -14,6 +14,11 @@ export const routes: Routes = [
   loadComponent: () => import('./dashboard/pages/dashboard/dashboard.component')
 },
 {
+  path:'users',
+  canActivate:[privateGuard()],
+  loadComponent: () => import('./users/pages/users/users.component')
+},
+{
   path:'**',
   redirectTo: 'dashboard',
   pathMatch: 'full',
