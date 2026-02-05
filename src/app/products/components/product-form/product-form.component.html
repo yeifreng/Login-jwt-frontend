@@ -1,0 +1,110 @@
+<div class="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+
+  <!-- Title (fuera del form) -->
+  <div>
+    <h1 class="text-2xl font-bold text-white">Agregar un nuevo producto</h1>
+    <p class="text-sm text-gray-500">
+      Ingresa los campos requeridos para agregar un nuevo producto a tu catálogo.
+    </p>
+  </div>
+
+
+  <form class="space-y-6 dark:bg-gray-900" autocomplete="off">
+
+    <!-- ================= General Information ================= -->
+    <section class=" border dark:border-gray-700 rounded-xl shadow-sm p-5 sm:p-6 space-y-5">
+
+      <h2 class="font-semibold text-gray-200">Información General</h2>
+
+      <!-- Product Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">
+          Nombre de producto
+        </label>
+        <input
+          type="text"
+          name="name"
+          placeholder="ej. panel led"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+
+      <!-- SKU + Category -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1">Proveedor</label>
+          <select
+            name="Proveedor"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option>Seleccione...</option>
+            <option>Ecolite</option>
+            <option>Luminaplus</option>
+            <option>Neguar</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-400 mb-1">Category</label>
+          <select
+            name="category"
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option>Seleccione...</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+            <option>Accessories</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-sm font-medium text-gray-400 mb-1">Descripción</label>
+        <textarea
+          name="description"
+          rows="4"
+          placeholder="Añade una pequeña descripción del producto..."
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        ></textarea>
+      </div>
+    </section>
+
+
+    <!-- ================= Stock & Pricing ================= -->
+    <section class=" border dark:border-gray-700 rounded-xl shadow-sm p-5 sm:p-6 space-y-5">
+
+      <h2 class="font-semibold text-gray-200">Stock & Pricing</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <input type="number" name="stock" placeholder="Cantidad recibida (Unds)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        <input type="text" name="unitPrice" placeholder="Precio ($)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        <input type="number" name="reorder" placeholder="Porcentaje de ganancia (%)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        <input type="text" name="costPrice" placeholder="Precio de venta ($)" disabled
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+      </div>
+    </section>
+
+
+    <!-- Submit -->
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium"
+      >
+        Save Product
+      </button>
+    </div>
+
+  </form>
+
+</div>

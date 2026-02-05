@@ -17,6 +17,10 @@ export const routes: Routes = [
   path:'users',
   canActivate:[privateGuard()],
   loadComponent: () => import('./users/pages/users/users.component')
+},{
+  path:'products',
+  canActivate:[privateGuard()],
+  loadComponent: () => import('./products/pages/products/products.component')
 },
 {
   path:'**',
